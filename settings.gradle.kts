@@ -14,4 +14,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "GaugeChart"
-include(":gauge_chart")
+include(":gaugechart")

@@ -1,4 +1,4 @@
-package com.jemshit.gauge_chart
+package com.jemshit.gaugechart
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
