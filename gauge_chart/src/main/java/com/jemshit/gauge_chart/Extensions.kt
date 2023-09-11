@@ -7,7 +7,7 @@ import androidx.compose.ui.graphics.luminance
 internal typealias Degree = Double
 internal typealias Radian = Double
 
-internal fun Degree.toRadian(): Radian = this / 180 * Math.PI
+fun Degree.toRadian(): Radian = this / 180 * Math.PI
 
 internal fun Color.generateOnColor()
         : Color {

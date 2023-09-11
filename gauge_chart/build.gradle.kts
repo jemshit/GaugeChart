@@ -42,6 +42,13 @@ android {
         abortOnError = false
         disable.add("InvalidPackage")
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 configurations.all {
