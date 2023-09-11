@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     id("maven-publish")
+    id("org.jetbrains.dokka") version "1.9.0"
 }
 
 android {
@@ -13,6 +14,7 @@ android {
     }
 
     buildFeatures {
+        buildConfig = true
         compose = true
     }
 
@@ -36,11 +38,6 @@ android {
             excludes.add("META-INF/LICENSE.md")
             excludes.add("META-INF/LICENSE-notice.md")
         }
-    }
-
-    lint {
-        abortOnError = false
-        disable.add("InvalidPackage")
     }
 
     publishing {
@@ -80,8 +77,9 @@ afterEvaluate {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0")
-    implementation("androidx.core:core-ktx:1.10.0")
+    dokkaJavadocPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.9.0")
 
+    implementation("androidx.core:core-ktx:1.10.0")
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.runtime:runtime")
