@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Fear Greed Indicator"
-include(":fear_greed_indicator")
+rootProject.name = "GaugeChart"
+include(":gauge_chart")

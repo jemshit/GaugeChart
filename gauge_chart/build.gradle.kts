@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.jemshit.fear_greed_indicator"
+    namespace = "com.jemshit.GaugeChart"
     compileSdk = 33
 
     defaultConfig {
@@ -59,8 +59,8 @@ afterEvaluate {
     publishing {
         publications {
             register<MavenPublication>("release") {
-                groupId = "com.jemshit.fear_greed_indicator"
-                artifactId = "fear_greed_indicator"
+                groupId = "com.jemshit.GaugeChart"
+                artifactId = "GaugeChart"
                 version = "1.0.0"
 
                 afterEvaluate {

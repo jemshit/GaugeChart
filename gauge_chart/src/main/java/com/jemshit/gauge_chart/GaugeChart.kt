@@ -1,4 +1,4 @@
-package com.jemshit.fear_greed_indicator
+package com.jemshit.gauge_chart
 
 import android.graphics.PointF
 import android.graphics.Typeface
@@ -44,33 +44,33 @@ import kotlin.math.sin
 
 // @improve: turn parameters into classes with builder
 @Composable
-fun FearGreedIndicator(modifier: Modifier = Modifier.background(Color.LightGray),
-                       width: Dp,
-                       height: Dp,
+fun GaugeChart(modifier: Modifier = Modifier.background(Color.LightGray),
+               width: Dp,
+               height: Dp,
 
-                       arcLength: Float = 0.51f,
-                       arcDrawStyle: Stroke = Stroke(36f, cap = StrokeCap.Butt),
-                       arcColors: List<Color> = listOf(Color.Red,
-                                                       Color.Yellow,
-                                                       Color.Green),
+               arcLength: Float = 0.51f,
+               arcDrawStyle: Stroke = Stroke(36f, cap = StrokeCap.Butt),
+               arcColors: List<Color> = listOf(Color.Red,
+                                               Color.Yellow,
+                                               Color.Green),
 
-                       steps: List<Int> = listOf(0, 50, 100),
-                       stepsPercentSign: Boolean = false,
-                       stepsPaint: android.graphics.Paint? = null,
+               steps: List<Int> = listOf(0, 50, 100),
+               stepsPercentSign: Boolean = false,
+               stepsPaint: android.graphics.Paint? = null,
 
-                       stepMarkers: Boolean = true,
-                       stepMarkerColor: Color = Color.White,
-                       stepMarkerWidth: Float = 7f,
+               stepMarkers: Boolean = true,
+               stepMarkerColor: Color = Color.White,
+               stepMarkerWidth: Float = 7f,
 
-                       currentStep: Int? = 69,
-                       indicatorBottomMargin: Float = 0f,
-                       currentStepPaint: android.graphics.Paint? = null,
-                       currentStepBgColors: Map<Pair<Int, Int>, Pair<Color, Color>>? = null,
-                       currentStepTextColors: Map<Pair<Int, Int>, Color>? = null,
+               currentStep: Int? = 69,
+               indicatorBottomMargin: Float = 0f,
+               currentStepPaint: android.graphics.Paint? = null,
+               currentStepBgColors: Map<Pair<Int, Int>, Pair<Color, Color>>? = null,
+               currentStepTextColors: Map<Pair<Int, Int>, Color>? = null,
 
-                       indicatorBellyColor: Color = Color.DarkGray,
-                       indicatorBellyBorderColor: Color = Color.LightGray,
-                       indicatorNeedleColor: Color = Color.Gray) {
+               indicatorBellyColor: Color = Color.DarkGray,
+               indicatorBellyBorderColor: Color = Color.LightGray,
+               indicatorNeedleColor: Color = Color.Gray) {
     // validation
     if (arcLength < 0f || arcLength > 1f) {
         return
@@ -189,7 +189,8 @@ fun FearGreedIndicator(modifier: Modifier = Modifier.background(Color.LightGray)
 
                           steps,
                           stepsPercentSign,
-                          stepsPaint)
+                          stepsPaint
+            )
 
             if (stepMarkers) {
                 drawStepMarkers(canvasSizeBigger,
@@ -202,7 +203,8 @@ fun FearGreedIndicator(modifier: Modifier = Modifier.background(Color.LightGray)
                                 arcWidth,
 
                                 stepMarkerColor,
-                                stepMarkerWidth)
+                                stepMarkerWidth
+                )
             }
         }
 
@@ -223,7 +225,8 @@ fun FearGreedIndicator(modifier: Modifier = Modifier.background(Color.LightGray)
                             currentStepCenter,
 
                             stepColors,
-                            stepTextColors)
+                            stepTextColors
+            )
 
             val indicatorBellyRadius = kotlin.math.min(arcWidthAdjusted + 4.dp.toPx(), 15.dp.toPx())
             drawIndicator(arcLength,
@@ -236,7 +239,8 @@ fun FearGreedIndicator(modifier: Modifier = Modifier.background(Color.LightGray)
                           indicatorBellyRadius,
                           indicatorBellyColor,
                           indicatorBellyBorderColor,
-                          indicatorNeedleColor)
+                          indicatorNeedleColor
+            )
         }
 
     }
@@ -597,143 +601,3 @@ private fun DrawScope.drawIndicator(arcLength: Float,
                style = Stroke(width = 2.dp.toPx()))
 
 }
-
-
-// region Previews
-@Preview(group = "arc", name = "25", showBackground = true)
-@Composable
-private fun PreviewArc25() {
-    FearGreedIndicator(width = 370.dp,
-                       height = 200.dp,
-
-                       arcLength = 0.25f,
-                       arcColors = listOf(Color.Red, Color.Green),
-                       currentStep = 10)
-}
-
-@Preview(group = "arc", name = "50", showBackground = true)
-@Composable
-private fun PreviewArc50() {
-    FearGreedIndicator(width = 370.dp,
-                       height = 200.dp,
-
-                       arcLength = 0.5f,
-                       arcColors = listOf(Color.Red, Color.Green),
-                       currentStep = 50)
-}
-
-@Preview(group = "arc", name = "60", showBackground = true)
-@Composable
-private fun PreviewArc60() {
-    FearGreedIndicator(width = 370.dp,
-                       height = 200.dp,
-
-                       arcLength = 0.6f,
-                       steps = listOf(0, 25, 50, 75, 100),
-                       currentStep = 50)
-}
-
-@Preview(group = "arc", name = "100", showBackground = true)
-@Composable
-private fun PreviewArc100() {
-    FearGreedIndicator(width = 370.dp,
-                       height = 370.dp,
-
-                       arcLength = 1f,
-                       steps = listOf(25, 50, 75, 100),
-                       currentStep = 45)
-}
-
-@Preview(group = "step", name = "0", showBackground = true)
-@Composable
-private fun PreviewStep0() {
-    FearGreedIndicator(width = 370.dp,
-                       height = 200.dp,
-
-                       arcLength = 0.51f,
-                       currentStep = 0)
-}
-
-@Preview(group = "step", name = "75", showBackground = true)
-@Composable
-private fun PreviewStep75() {
-    FearGreedIndicator(width = 370.dp,
-                       height = 200.dp,
-
-                       arcLength = 0.51f,
-                       arcDrawStyle = Stroke(18f, cap = StrokeCap.Round),
-                       currentStep = 75)
-}
-
-@Preview(group = "stepText", name = "sign", showBackground = true)
-@Composable
-private fun PreviewStepTextSign() {
-    FearGreedIndicator(width = 370.dp,
-                       height = 200.dp,
-
-                       arcLength = 0.51f,
-                       arcDrawStyle = Stroke(18f, cap = StrokeCap.Round),
-                       stepsPercentSign = true,
-                       currentStep = 75)
-}
-
-@Preview(group = "color", name = "single", showBackground = true)
-@Composable
-private fun PreviewColorSingle() {
-    FearGreedIndicator(width = 370.dp,
-                       height = 200.dp,
-
-                       arcLength = 0.9f,
-                       arcColors = listOf(Color.Blue),
-                       steps = listOf(20, 50, 85),
-                       currentStep = 0)
-}
-
-@Preview(group = "color", name = "multi", showBackground = true)
-@Composable
-private fun PreviewColorMulti() {
-    FearGreedIndicator(width = 370.dp,
-                       height = 370.dp,
-
-                       arcLength = 0.80f,
-                       arcDrawStyle = Stroke(45f, cap = StrokeCap.Butt),
-                       arcColors = listOf(Color.Red,
-                                          Color.Yellow,
-                                          Color.Green,
-                                          Color.Blue,
-                                          Color.Black),
-                       steps = listOf(0, 25, 50, 75),
-                       currentStep = 100)
-}
-
-@Preview(group = "error", name = "1", showBackground = true)
-@Composable
-private fun PreviewError1() {
-    FearGreedIndicator(width = 370.dp,
-                       height = 200.dp,
-
-                       arcLength = 11f)
-}
-
-@Preview(group = "animate", name = "0To50", showBackground = true)
-@Composable
-private fun PreviewAnimate50To25() {
-    var step by remember { mutableIntStateOf(50) }
-    LaunchedEffect(Unit) {
-        delay(1000)
-        step = 25
-    }
-    FearGreedIndicator(width = 370.dp,
-                       height = 250.dp,
-
-                       arcLength = 0.60f,
-                       arcDrawStyle = Stroke(45f, cap = StrokeCap.Butt),
-                       arcColors = listOf(Color.Red,
-                                          Color.Yellow,
-                                          Color.Green,
-                                          Color.Blue,
-                                          Color.Black),
-                       steps = listOf(0, 25, 50, 75),
-                       currentStep = step)
-}
-// endregion

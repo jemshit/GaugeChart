@@ -1,4 +1,4 @@
-package com.jemshit.fear_greed_indicator
+package com.jemshit.gauge_chart
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
