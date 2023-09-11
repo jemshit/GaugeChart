@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.jemshit.GaugeChart"
+    namespace = "com.jemshit.gaugechart"
     compileSdk = 33
 
     defaultConfig {
@@ -63,8 +63,8 @@ afterEvaluate {
     publishing {
         publications {
             register<MavenPublication>("release") {
-                groupId = "com.jemshit.GaugeChart"
-                artifactId = "GaugeChart"
+                groupId = "com.jemshit.gaugechart"
+                artifactId = "gaugechart"
                 version = "1.0.0"
 
                 afterEvaluate {
@@ -77,7 +77,7 @@ afterEvaluate {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0")
-    dokkaJavadocPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.9.0")
+    dokkaPlugin("org.jetbrains.dokka:android-documentation-plugin:1.9.0")
 
     implementation("androidx.core:core-ktx:1.10.0")
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
