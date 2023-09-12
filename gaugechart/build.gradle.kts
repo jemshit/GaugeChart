@@ -1,8 +1,8 @@
 plugins {
     id("com.android.library")
-    id("kotlin-android")
+    id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.dokka")
     id("maven-publish")
-    id("org.jetbrains.dokka") version "1.9.0"
 }
 
 android {
@@ -33,7 +33,6 @@ android {
 
     packaging {
         resources {
-            excludes.add("META-INF/*.kotlin_module")
             excludes.add("META-INF/services/javax.annotation.processing.Processor")
             excludes.add("META-INF/LICENSE.md")
             excludes.add("META-INF/LICENSE-notice.md")
@@ -65,7 +64,7 @@ afterEvaluate {
             register<MavenPublication>("release") {
                 groupId = "com.jemshit.gaugechart"
                 artifactId = "gaugechart"
-                version = "1.0.0"
+                version = "1.0.1"
 
                 afterEvaluate {
                     from(components["release"])

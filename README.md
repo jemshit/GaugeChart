@@ -7,7 +7,7 @@ Customizable GaugeChart / SpeedometerChart for Jetpack Compose
 [![Release](https://jitpack.io/v/jemshit/GaugeChart.svg)](https://jitpack.io/#jemshit/GaugeChart)
 
 ```kotlin
-implementation("com.jemshit.GaugeChart:GaugeChart:x.y.z")
+implementation("com.jemshit:GaugeChart:x.y.z")
 ```
 
 ### Usage
